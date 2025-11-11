@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>블루미에서 민철이 피하기1</title>
+<title>불탄 집에서 물방울 피하기</title>
 <style>
 body {
     margin:0; padding:20px;
@@ -87,14 +87,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebas
 import { getDatabase, ref, push, get, query, orderByChild, limitToLast } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA4uk5Iv6UPOX_P2d-tKkZd1p9E8m2rV44",
-    authDomain: "aaaa-85ddd.firebaseapp.com",
-    databaseURL: "https://aaaa-85ddd-default-rtdb.firebaseio.com",
-    projectId: "aaaa-85ddd",
-    storageBucket: "aaaa-85ddd.firebasestorage.app",
-    messagingSenderId: "947357162592",
-    appId: "1:947357162592:web:599896666a79b4b219f705",
-    measurementId: "G-KVHXK6GR39"
+  apiKey: "AIzaSyAYUJZ_MUw6OSpidtZez0Wnt379VZUmXvE",
+  authDomain: "test1-ae7f3.firebaseapp.com",
+  projectId: "test1-ae7f3",
+  storageBucket: "test1-ae7f3.firebasestorage.app",
+  messagingSenderId: "800860692009",
+  appId: "1:800860692009:web:fe021b95067e77b8420638",
+  measurementId: "G-V8N9RN68FD"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -131,7 +130,7 @@ window.showTopScores = async function(){
 </head>
 <body onload="brython()">
 
-<h1>블루미에서 민철이 피하기</h1>
+<h1>불난집에서 물방울 피하기</h1>
 <div id="controls">
   <button id="start">시작</button>
   <div id="score">점수: 0</div>
@@ -172,11 +171,12 @@ player_loaded = False
 bullet_loaded = False
 bg_loaded = False
 
-player_img = html.IMG(); player_img.src='player.png'
+# ✅ 이미지 파일명 변경됨
+player_img = html.IMG(); player_img.src='player1.png'
 player_img.bind('load', lambda ev: globals().update({'player_loaded': True}))
-bullet_img = html.IMG(); bullet_img.src='bullet.png'
+bullet_img = html.IMG(); bullet_img.src='bullet1.png'
 bullet_img.bind('load', lambda ev: globals().update({'bullet_loaded': True}))
-bg_img = html.IMG(); bg_img.src='background.png'
+bg_img = html.IMG(); bg_img.src='background1.png'
 bg_img.bind('load', lambda ev: globals().update({'bg_loaded': True}))
 
 touch_start_player_x = 0
@@ -221,7 +221,6 @@ def update(dt):
             bullets.remove(b)
             score += 1
 
-    # ✅ 점수에 따라 stage에 항상 bullet 유지
     target_bullet_count = base_bullet_count + (score // 10) * extra_bullets_per_10_score
     while len(bullets) < target_bullet_count:
         spawn_bullet()
